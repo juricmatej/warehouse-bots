@@ -9,8 +9,8 @@ import java.util.Random;
 public class Gui extends JPanel {
 
     private final BufferedImage floor = ImageIO.read(new File("./Assets/PNG/Tiles/platformPack_tile040.png"));
-    private final BufferedImage police = ImageIO.read(new File("./Assets/PNG/Tiles/platformPack_tile007.png"));
-    private final BufferedImage bot = ImageIO.read(new File("./Assets/PNG/Items/platformPack_item002.png"));
+    private final BufferedImage police = ImageIO.read(new File("./Assets/PNG/crate_03.png"));
+    private final BufferedImage botEmpty= ImageIO.read(new File("./Assets/PNG/robot_01.png"));
     // private final BufferedImage player = ImageIO.read(new File("./Assets/Player/player_01.png"));
     //private final BufferedImage coin = ImageIO.read(new File("./Assets/Environment/environment_11.png"));
    /* private final BufferedImage[] portals =  new BufferedImage[]{
@@ -22,7 +22,7 @@ public class Gui extends JPanel {
     };
 */
     public Gui() throws IOException {
-        JFrame frame = new JFrame("Coin collecting game");
+        JFrame frame = new JFrame("Warehouse Bots");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(GameState.WIDTH * 64, insets().top + (GameState.HEIGHT * 64));
         frame.add(this);
@@ -36,6 +36,10 @@ public class Gui extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         int tileWidth = (GameState.WIDTH*64 ) / GameState.WIDTH;
         int tileHeight = (GameState.HEIGHT*64) / GameState.HEIGHT;
+        Random random = new Random();
+
+        int xz = 2 * tileWidth;
+        int yz = 2 * tileHeight;
 
 
         for (int col = 0; col < GameState.WIDTH; col++) {
@@ -55,7 +59,7 @@ public class Gui extends JPanel {
 
             }
         }
-
+        g2d.drawImage(botEmpty, xz, yz,tileWidth,tileHeight, null);
        /*
         for (int portalIndex = 0; portalIndex < portals.length; portalIndex++) {
             int x = GameState.portals.get(portalIndex).getX() * tileWidth;
